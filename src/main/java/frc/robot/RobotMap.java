@@ -19,7 +19,6 @@ package frc.robot;
  */
 public class RobotMap {
 
-
 public static final int ultrasonicPort = 0;
 public static final int leftFrontPort = 2;
 public static final int leftBackPort = 3;
