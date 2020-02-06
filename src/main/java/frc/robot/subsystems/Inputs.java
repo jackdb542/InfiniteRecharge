@@ -1,17 +1,17 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.XboxController;
+//import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Inputs extends SubsystemBase {
-  public class InputJoystick {
+  public class InputsJoystick{
     double x = 0.0;
 	  double y = 0.5;
     double r = 0.5;
 	    double voltage = 0.0;
 	//boolean up, down, mechUp, mechDown, pistonUp, pistonDown;
-    public InputJoystick(final Joystick joy, final double voltage) {
+    public InputsJoystick(final Joystick joy, final double voltage) {
       x = joy.getX();
       y = joy.getY();
       r = joy.getTwist();

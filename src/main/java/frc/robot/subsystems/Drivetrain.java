@@ -40,7 +40,7 @@ public class Drivetrain extends SubsystemBase {
     // needs to go to give out an output for a certain value
   }
 
-  public static void manualDrive(double x, double y, double r) {
+  public void manualDrive(double x, double y, double r) {
     // halve the turning power, reason for this is to not risk any damage done to
     // motors during testing, only should be set higher during comp
     // r*= X, where r is the turning sensitivity speed, samething on a scale from
