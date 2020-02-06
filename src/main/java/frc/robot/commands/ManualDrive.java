@@ -13,14 +13,13 @@ public class ManualDrive extends CommandBase {
    * @param m_inputs
    * @param m_drivetrain
    */
-  public ManualDrive(Drivetrain drivetrain, Inputs inputs, Inputs m_inputs, Drivetrain m_drivetrain) {
-    m_drivetrain = drivetrain;
+  public ManualDrive(Drivetrain drivetrain, Inputs inputs, Inputs m_inputs) {
     m_inputs = inputs;
     
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
-  // Called when the command is initially scheduled.
+// Called when the command is initially scheduled.
   @Override
   public void initialize() {
   }

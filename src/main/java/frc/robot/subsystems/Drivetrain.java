@@ -30,8 +30,8 @@ public class Drivetrain extends SubsystemBase {
   // the robot relativly unreliable
   final static int inputCurve = 4;
   final static double RFM = -1;
-  final double RBM = 1;
-  final double LBM = -1;
+  final static double RBM = 1;
+  final static double LBM = -1;
   final static double LFM = 1;
 
   public void drivetrain() {

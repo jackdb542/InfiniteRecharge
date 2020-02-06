@@ -28,17 +28,19 @@ public class RobotContainer {
   private final Drivetrain m_drivetrain = new Drivetrain();
   private final Inputs m_inputs = new Inputs();
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
-  private final ManualDrive m_manualdrive = new ManualDrive(m_drivetrain, m_inputs, m_inputs, m_drivetrain);
+  private final ManualDrive m_manualdrive = new ManualDrive(m_drivetrain, m_inputs, m_inputs);
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
    */
   public RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
-    //final double x = joy.getX();
-    //final double y = joy.getY();
-    //final double r = joy.getTwist();
-   //{@Link edu.wpi.first.wpilibj.Joystick;}
+    
+    m_drivetrain.setDefaultCommand(
+      new ManualDrive(
+        drivetrain,
+      ()->m_inputs.getY(),
+      ()->m_inputs.getTwist()));
 
   }
   public ManualDrive getM_manualdrive() {
