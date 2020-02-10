@@ -13,9 +13,15 @@ public class ManualDrive extends CommandBase {
    * @param m_inputs
    * @param m_drivetrain
    */
-  public ManualDrive(Drivetrain drivetrain, Inputs inputs, Inputs m_inputs) {
-    m_inputs = inputs;
-    
+  private double x_speed;
+  private double y_speed;
+  private double r_speed;
+  private Drivetrain m_drivetrain;
+  public ManualDrive(Drivetrain drivetrain, double x, double y, double r) {
+    m_drivetrain = drivetrain;
+    x_speed = x;
+    y_speed = y;
+    r_speed = r;
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
@@ -27,6 +33,7 @@ public class ManualDrive extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+  m_drivetrain.manualDrive(x_speed, y_speed, r_speed);
   }
 
   // Called once the command ends or is interrupted.

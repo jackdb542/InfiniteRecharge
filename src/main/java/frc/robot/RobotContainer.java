@@ -15,6 +15,7 @@ import frc.robot.commands.ManualDrive;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.Inputs;
+import edu.wpi.first.wpilibj.RobotBase;
 /**
  * . This class is where the bulk of the robot should be declared. Since
  * Command-based is a "declarative" paradigm, very little robot logic should
@@ -28,7 +29,6 @@ public class RobotContainer {
   private final Drivetrain m_drivetrain = new Drivetrain();
   private final Inputs m_inputs = new Inputs();
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
-  private final ManualDrive m_manualdrive = new ManualDrive(m_drivetrain, m_inputs, m_inputs);
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
    */
@@ -38,21 +38,11 @@ public class RobotContainer {
     
     m_drivetrain.setDefaultCommand(
       new ManualDrive(
-        drivetrain,
-      ()->m_inputs.getY(),
-      ()->m_inputs.getTwist()));
-
-  }
-  public ManualDrive getM_manualdrive() {
-	return m_manualdrive;
-}
-
-  public Drivetrain getM_drivetrain() {
-    return m_drivetrain;
-  }
-
-  public Inputs getM_inputs() {
-    return m_inputs;
+        m_drivetrain,
+          m_inputs.getX(),
+          m_inputs.getY(),
+          m_inputs.getTwist()));
+          
   }
 
   /**

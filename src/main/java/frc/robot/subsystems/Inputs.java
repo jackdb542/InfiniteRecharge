@@ -1,22 +1,25 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.Joystick;
+//import edu.wpi.first.wpilibj.Joystick;
 //import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Inputs extends SubsystemBase {
-  public class InputsJoystick{
     double x = 0.0;
 	  double y = 0.5;
     double r = 0.5;
 	    double voltage = 0.0;
-	//boolean up, down, mechUp, mechDown, pistonUp, pistonDown;
-    public InputsJoystick(final Joystick joy, final double voltage) {
-      x = joy.getX();
-      y = joy.getY();
-      r = joy.getTwist();
-      this.voltage = voltage;
+    public Joystick joy = new Joystick(1);
+    public Inputs(){
+
     }
+    //boolean up, down, mechUp, mechDown, pistonUp, pistonDown;
+    //public InputsJoystick(final Joystick joy, final double voltage) {
+      //x = joy.getX();
+      //y = joy.getY();
+      //r = joy.getTwist();
+      //this.voltage = voltage;
     // 2018-2019 Pneumatic Controller Map
     // public InputJoystick(XboxController box, double voltage) {
     // pistonUp = box.getRawButton(1);
@@ -28,7 +31,7 @@ public class Inputs extends SubsystemBase {
     // this.voltage = voltage;
 
     public double getX() {
-      return x;
+      return joy.getX();
     }
 
     public void setX(final double value) {
@@ -36,7 +39,7 @@ public class Inputs extends SubsystemBase {
     }
 
     public double getY() {
-      return y;
+      return joy.getY();
     }
 
     public void setY(final double value) {
@@ -44,11 +47,10 @@ public class Inputs extends SubsystemBase {
     }
 
     public double getTwist() {
-      return r;
+      return joy.getTwist();
     }
 
     public void setTwist(final double value) {
     r = value;
     }
   }
-}
