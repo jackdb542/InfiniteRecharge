@@ -8,6 +8,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.commands.ExampleCommand;
@@ -29,6 +30,7 @@ public class RobotContainer {
   private final Drivetrain m_drivetrain = new Drivetrain();
   private final Inputs m_inputs = new Inputs();
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
+  private final Joystick joy = new Joystick(0);
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
    */
@@ -39,9 +41,9 @@ public class RobotContainer {
     m_drivetrain.setDefaultCommand(
       new ManualDrive(
         m_drivetrain,
-          m_inputs.getX(),
-          m_inputs.getY(),
-          m_inputs.getTwist()));
+          joy.getX(),
+          joy.getY(),
+          joy.getTwist()));
           
   }
 

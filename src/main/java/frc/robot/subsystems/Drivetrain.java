@@ -34,7 +34,7 @@ public class Drivetrain extends SubsystemBase {
   final static double LBM = -1;
   final static double LFM = 1;
 
-  public void drivetrain() {
+  public Drivetrain() {
     drive.setDeadband(0.03);
     // deadband is sensitivity for motor control, to determine how far the joystick
     // needs to go to give out an output for a certain value
