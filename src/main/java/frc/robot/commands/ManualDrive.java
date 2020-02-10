@@ -23,6 +23,7 @@ public class ManualDrive extends CommandBase {
     y_speed = y;
     r_speed = r;
     // Use addRequirements() here to declare subsystem dependencies.
+    addRequirements(m_drivetrain);
   }
 
 // Called when the command is initially scheduled.
