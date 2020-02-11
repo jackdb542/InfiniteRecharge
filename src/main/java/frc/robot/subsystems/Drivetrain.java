@@ -1,26 +1,29 @@
 package frc.robot.subsystems;
-  import edu.wpi.first.wpilibj.SpeedControllerGroup;
-  import edu.wpi.first.wpilibj.VictorSP;
-  import edu.wpi.first.wpilibj2.command.SubsystemBase;
-  import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-  import frc.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.PWMTalonSRX;
+import edu.wpi.first.wpilibj.PWMVictorSPX;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
+//import edu.wpi.first.wpilibj.VictorSP;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import frc.robot.RobotMap;
+  
 public class Drivetrain extends SubsystemBase {
   /**
    * Creates a new ExampleSubsystem.
    */
-  final static VictorSP leftFront = new VictorSP(RobotMap.leftFrontPort);
-  final static VictorSP rightFront = new VictorSP(RobotMap.rightFrontPort);
-  final static VictorSP leftRear = new VictorSP(RobotMap.leftBackPort);
-  final static VictorSP rightRear = new VictorSP(RobotMap.rightBackPort);
+  PWMVictorSPX leftFront = new PWMVictorSPX(RobotMap.leftFrontPort);
+  PWMVictorSPX rightFront = new PWMVictorSPX(RobotMap.rightFrontPort);
+  PWMVictorSPX leftBack = new PWMVictorSPX(RobotMap.leftBackPort);
+  PWMTalonSRX rightBack = new PWMTalonSRX(RobotMap.rightBackPort);
     //These are the id's for each of the motor controllers. We used the VictorSP instead of the SPX command
     //because of errors we kept getting
   
-    final static SpeedControllerGroup m_left = new SpeedControllerGroup(leftFront, leftRear);
+  SpeedControllerGroup m_left = new SpeedControllerGroup(leftFront, leftBack);
     // left motor group
-  final static SpeedControllerGroup m_right = new SpeedControllerGroup(rightFront, rightRear);
+  SpeedControllerGroup m_right = new SpeedControllerGroup(rightFront, rightBack);
     // right motor group
-  final static DifferentialDrive drive = new DifferentialDrive(m_left, m_right);
+  DifferentialDrive drive = new DifferentialDrive(m_left, m_right);
     // drivetrain group of left and right
  
   // motors grouped in 2 different functions basec on location, in this case,

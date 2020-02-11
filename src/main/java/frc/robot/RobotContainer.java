@@ -37,6 +37,10 @@ public class RobotContainer {
   public RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
+
+    System.out.println(joy.getX());
+    System.out.println(joy.getY());
+    System.out.println(joy.getTwist());
     
     m_drivetrain.setDefaultCommand(
       new ManualDrive(

@@ -7,11 +7,6 @@ import frc.robot.subsystems.Drivetrain;
 public class ManualDrive extends CommandBase {
   /**
    * Creates a new ManualDrive.
-   *
-   * @param inputs
-   * @param drivetrain
-   * @param m_inputs
-   * @param m_drivetrain
    */
   private double x_speed;
   private double y_speed;

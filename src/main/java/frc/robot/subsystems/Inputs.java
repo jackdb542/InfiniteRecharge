@@ -10,15 +10,16 @@ public class Inputs extends SubsystemBase {
 	  double y = 0.5;
     double r = 0.5;
 	    double voltage = 0.0;
-    public Joystick joy = new Joystick(1);
+    public Joystick joy = new Joystick(0);
     public Inputs(){
 
     }
     //boolean up, down, mechUp, mechDown, pistonUp, pistonDown;
-    //public InputsJoystick(final Joystick joy, final double voltage) {
+    //public Inputs(final Joystick joy, final double voltage) {
       //x = joy.getX();
       //y = joy.getY();
       //r = joy.getTwist();
+    //}
       //this.voltage = voltage;
     // 2018-2019 Pneumatic Controller Map
     // public InputJoystick(XboxController box, double voltage) {
