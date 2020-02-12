@@ -11,6 +11,8 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.commands.ColorPositionControl;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.ManualDrive;
 import frc.robot.subsystems.Drivetrain;
@@ -30,7 +32,9 @@ public class RobotContainer {
   private final Drivetrain m_drivetrain = new Drivetrain();
   private final Inputs m_inputs = new Inputs();
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
-  private final Joystick joy = new Joystick(0);
+  private Joystick joy = new Joystick(0);
+  private final JoystickButton m_colorPositionControlButton = new JoystickButton(joy, 11);
+  private final ColorPositionControl m_colorPositionControl = new ColorPositionControl();
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
    */
@@ -43,11 +47,8 @@ public class RobotContainer {
     System.out.println(joy.getTwist());
     
     m_drivetrain.setDefaultCommand(
-      new ManualDrive(
-        m_drivetrain,
-          joy.getX(),
-          joy.getY(),
-          joy.getTwist()));
+      new ManualDrive(m_drivetrain, joy)
+    );
           
   }
 
@@ -58,6 +59,7 @@ public class RobotContainer {
    * passing it to a {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
+    m_colorPositionControlButton.whenPressed(m_colorPositionControl);
   }
 
 

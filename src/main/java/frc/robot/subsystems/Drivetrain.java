@@ -44,6 +44,7 @@ public class Drivetrain extends SubsystemBase {
   }
 
   public void manualDrive(double x, double y, double r) {
+    drive.arcadeDrive(y, r);
     // halve the turning power, reason for this is to not risk any damage done to
     // motors during testing, only should be set higher during comp
     // r*= X, where r is the turning sensitivity speed, samething on a scale from
@@ -52,16 +53,16 @@ public class Drivetrain extends SubsystemBase {
     // front wheel power is linked to rear wheel power so these two are really left
     // power and right power
     // left front power
-    double lfpower = +y + r;
-    double rfpower = -y + r;
+    //double lfpower = +y + r;
+    //double rfpower = -y + r;
 
     // some math that I dont know, stole from old robot code that was working
-    lfpower = Math.signum(lfpower) * (Math.pow(inputCurve, Math.abs(lfpower)) - 1) / (inputCurve - 1);
-    rfpower = Math.signum(rfpower) * (Math.pow(inputCurve, Math.abs(rfpower)) - 1) / (inputCurve - 1);
+    //lfpower = Math.signum(lfpower) * (Math.pow(inputCurve, Math.abs(lfpower)) - 1) / (inputCurve - 1);
+    //rfpower = Math.signum(rfpower) * (Math.pow(inputCurve, Math.abs(rfpower)) - 1) / (inputCurve - 1);
     // false is for squared input, if too sensitive change to true
-    drive.tankDrive(rfpower * -RFM, lfpower * -LFM, false);
-  
-      }
+    //drive.tankDrive(rfpower * -RFM, lfpower * -LFM, false);
+  }
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
