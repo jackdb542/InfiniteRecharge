@@ -13,12 +13,28 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.ColorPositionControl;
+import frc.robot.commands.EndgameProtocol;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.ManualDrive;
+import frc.robot.commands.SlideRackCommand;
 import frc.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.Endgame;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.Inputs;
-import edu.wpi.first.wpilibj.RobotBase;
+//import edu.wpi.first.wpilibj.RobotBase;
+import frc.robot.subsystems.SlideRack;
+
+//import edu.wpi.first.wpilibj.DutyCycleEncoder;
+  //import edu.wpi.first.wpilibj.util.Color;
+  //import edu.wpi.first.wpilibj.TimedRobot;
+  //import edu.wpi.first.wpilibj.I2C;
+  //import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+  //import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+  //import edu.wpi.first.wpilibj.util.Color;
+//Color Sensor Imports
+    //import com.revrobotics.ColorSensorV3;
+    //import com.revrobotics.ColorMatch;
+    //import com.revrobotics.ColorMatchResult;
 /**
  * . This class is where the bulk of the robot should be declared. Since
  * Command-based is a "declarative" paradigm, very little robot logic should
@@ -30,18 +46,25 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   private final Drivetrain m_drivetrain = new Drivetrain();
+  private final SlideRack m_slideRack = new SlideRack();
   private final Inputs m_inputs = new Inputs();
-  private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
   private Joystick joy = new Joystick(0);
-  private final JoystickButton m_colorPositionControlButton = new JoystickButton(joy, 11);
+  private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
+  private final JoystickButton m_colorPositionControlButton = new JoystickButton(joy, 2);
   private final ColorPositionControl m_colorPositionControl = new ColorPositionControl();
+  private final XboxController xbox = new XboxController(1);
+  private final SlideRackCommand m_sRCommand = new SlideRackCommand(xbox, m_slideRack);
+  //sREncoder = (s)lide(R)ackEncoder
+  private final Endgame m_endgame = new Endgame();
+  private final EndgameProtocol m_EndgameProtocol = new EndgameProtocol();
+  
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
    */
   public RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
-
+    
     System.out.println(joy.getX());
     System.out.println(joy.getY());
     System.out.println(joy.getTwist());
@@ -49,7 +72,9 @@ public class RobotContainer {
     m_drivetrain.setDefaultCommand(
       new ManualDrive(m_drivetrain, joy)
     );
-          
+    m_slideRack.setDefaultCommand(
+      new SlideRackCommand(xbox, m_slideRack)
+    );
   }
 
   /**
@@ -60,6 +85,7 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
     m_colorPositionControlButton.whenPressed(m_colorPositionControl);
+    
   }
 
 

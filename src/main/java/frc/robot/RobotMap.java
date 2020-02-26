@@ -19,13 +19,17 @@ package frc.robot;
  */
 public class RobotMap {
 
-public static final int ultrasonicPort = 0;
+public static final int slideRackPort = 5;
+public static final int endGamePort = 4;
+
 public static final int leftFrontPort = 2;
 public static final int leftBackPort = 3;
 public static final int rightFrontPort = 0;
 public static final int rightBackPort = 1;
+
 public static int joystickPort = 0;
 public static int XBoxPort = 1;
+
 public static int WheelDiameter = 6;
 
 //Unused pnumatics variables

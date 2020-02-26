@@ -1,9 +1,9 @@
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.PWMTalonSRX;
+//import edu.wpi.first.wpilibj.PWMTalonSRX;
 import edu.wpi.first.wpilibj.PWMVictorSPX;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
-//import edu.wpi.first.wpilibj.VictorSP;
+//import edu.wpi.first.wpilibj
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.RobotMap;
@@ -15,7 +15,7 @@ public class Drivetrain extends SubsystemBase {
   PWMVictorSPX leftFront = new PWMVictorSPX(RobotMap.leftFrontPort);
   PWMVictorSPX rightFront = new PWMVictorSPX(RobotMap.rightFrontPort);
   PWMVictorSPX leftBack = new PWMVictorSPX(RobotMap.leftBackPort);
-  PWMTalonSRX rightBack = new PWMTalonSRX(RobotMap.rightBackPort);
+  PWMVictorSPX rightBack = new PWMVictorSPX(RobotMap.rightBackPort);
     //These are the id's for each of the motor controllers. We used the VictorSP instead of the SPX command
     //because of errors we kept getting
   
@@ -48,6 +48,7 @@ public class Drivetrain extends SubsystemBase {
     // motors during testing, only should be set higher during comp
     // r*= X, where r is the turning sensitivity speed, samething on a scale from
     // 0.00 to 1.00, the higher the faster the iteration will turn
+    // DURING REGIONALS, HIGHER RADIUS NUMBER IS RECOMMENDED, LIKE 0.75+ IF YOU CAN HANDLE
     r *= 0.75;// *9*/
     // front wheel power is linked to rear wheel power so these two are really left
     // power and right power

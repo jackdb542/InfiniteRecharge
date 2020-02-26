@@ -8,16 +8,12 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.ColorSensor;
-
-public class ColorPositionControl extends CommandBase {
+import edu.wpi.first.wpilibj.XboxController;
+public class EndgameProtocol extends CommandBase {
   /**
-   * Creates a new ColorPositionControl.
+   * Creates a new EndgameProtocol.
    */
-
-  private ColorSensor m_colorSensor;
-
-  public ColorPositionControl() {
+  public EndgameProtocol() {
     // Use addRequirements() here to declare subsystem dependencies.
   }
 

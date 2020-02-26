@@ -8,37 +8,44 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.ColorSensor;
+import frc.robot.subsystems.Drivetrain;
+import edu.wpi.first.wpilibj.Timer;
 
-public class ColorPositionControl extends CommandBase {
+public class Autonomous extends CommandBase{
+  private final Timer m_timer = new Timer();
+  private final Drivetrain m_drivetrain;
   /**
-   * Creates a new ColorPositionControl.
+   * Creates a new Autonomous.
    */
-
-  private ColorSensor m_colorSensor;
-
-  public ColorPositionControl() {
+  public Autonomous(Drivetrain drivetrain) {
+    m_drivetrain = drivetrain;
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    m_timer.reset();
+    m_timer.start();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+     m_drivetrain.manualDrive(0, .5, 0);
   }
-
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+    m_drivetrain.manualDrive(0, 0, 0);
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
+    if(m_timer.get() >= 2){
+       return true;
+    }
     return false;
   }
 }

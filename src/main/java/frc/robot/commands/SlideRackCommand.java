@@ -7,17 +7,29 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.ColorSensor;
+import frc.robot.subsystems.SlideRack;
 
-public class ColorPositionControl extends CommandBase {
+
+public class SlideRackCommand extends CommandBase {
+  // Go up on a button press
+  // Go down on a button press
+
+  boolean isUp = false;
+  boolean debounce = false;
+
+  XboxController xbox;
+  SlideRack slideRack;
+
   /**
-   * Creates a new ColorPositionControl.
+   * Creates a new ClimberCommand.
    */
-
-  private ColorSensor m_colorSensor;
-
-  public ColorPositionControl() {
+  public SlideRackCommand(XboxController xbox, SlideRack slideRack) {
+    this.xbox = xbox;
+    this.slideRack = slideRack;
+   
+      addRequirements(slideRack);
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
@@ -29,6 +41,20 @@ public class ColorPositionControl extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    if (xbox.getRawButton(5)) {
+      if (!debounce) {
+        isUp = !isUp;
+        debounce = true;
+      }
+    } else {
+      debounce = false;
+    }
+
+    if (isUp) {
+      slideRack.setPosition(20.0);
+    } else {
+      slideRack.setPosition(0.0);
+    }
   }
 
   // Called once the command ends or is interrupted.
