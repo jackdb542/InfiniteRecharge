@@ -10,6 +10,7 @@ public class Inputs extends SubsystemBase {
     double r = 0.5;
 	    double voltage = 0.5;
     public Joystick joy = new Joystick(0);
+    public XboxController xbox = new XboxController(1);
     public Inputs(){
 
     }

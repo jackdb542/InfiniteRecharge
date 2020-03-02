@@ -1,15 +1,10 @@
-/*----------------------------------------------------------------------------*/
-/* Copyright (c) 2018-2019 FIRST. All Rights Reserved.                        */
-/* Open Source Software - may be modified and shared by FRC teams. The code   */
-/* must be accompanied by the FIRST BSD license file in the root directory of */
-/* the project.                                                               */
-/*----------------------------------------------------------------------------*/
-
 package frc.robot;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.XboxController; //<--- You don't need XboxButton imports, if you can't find them, probably because they're built in into this import, so everything you want to set to the Xbox Controller, would just be xbox.button or something like that
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.ColorPositionControl;
@@ -17,6 +12,8 @@ import frc.robot.commands.EndgameProtocol;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.ManualDrive;
 import frc.robot.commands.SlideRackCommand;
+import frc.robot.subsystems.ColorMatch;
+import frc.robot.subsystems.ColorSensor;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Endgame;
 import frc.robot.subsystems.ExampleSubsystem;
@@ -56,8 +53,9 @@ public class RobotContainer {
   private final SlideRackCommand m_sRCommand = new SlideRackCommand(xbox, m_slideRack);
   //sREncoder = (s)lide(R)ackEncoder
   private final Endgame m_endgame = new Endgame();
-  private final EndgameProtocol m_EndgameProtocol = new EndgameProtocol();
-  
+  private final EndgameProtocol m_EndgameProtocol = new EndgameProtocol(xbox, m_endgame);
+  private final ColorSensor m_colorSensor = new ColorSensor();
+  private final ColorMatch m_colorMatch = new ColorMatch();
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
    */
@@ -75,6 +73,9 @@ public class RobotContainer {
     m_slideRack.setDefaultCommand(
       new SlideRackCommand(xbox, m_slideRack)
     );
+   m_endgame.setDefaultCommand(
+     new EndgameProtocol(xbox, m_endgame)
+   );
   }
 
   /**

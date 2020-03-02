@@ -1,10 +1,3 @@
-/*----------------------------------------------------------------------------*/
-/* Copyright (c) 2017-2019 FIRST. All Rights Reserved.                        */
-/* Open Source Software - may be modified and shared by FRC teams. The code   */
-/* must be accompanied by the FIRST BSD license file in the root directory of */
-/* the project.                                                               */
-/*----------------------------------------------------------------------------*/
-
 package frc.robot;
 
 import edu.wpi.cscore.UsbCamera;
@@ -39,15 +32,23 @@ public class Robot extends TimedRobot {
     m_robotContainer = new RobotContainer();
     
     CameraServer.getInstance().startAutomaticCapture();
-    UsbCamera cam = CameraServer.getInstance().startAutomaticCapture();
-      cam.setResolution(680,440);
-      cam.setFPS(60);
+    UsbCamera cam0 = CameraServer.getInstance().startAutomaticCapture();
+      cam0.setResolution(240,120);
+      cam0.setFPS(60);
     m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
     m_chooser.addOption("My Auto", kCustomAuto);
     SmartDashboard.putData("Auto choices", m_chooser);
   }
-
-  /**
+  { 
+    CameraServer.getInstance().startAutomaticCapture();
+    UsbCamera cam1 = CameraServer.getInstance().startAutomaticCapture();
+    cam1.setResolution(240,120);
+    cam1.setFPS(60);
+    m_chooser.setDefaultOption("Default Auto", kDefaultAuto);
+    m_chooser.addOption("My Auto", kCustomAuto);
+    SmartDashboard.putData("Auto choices", m_chooser);
+  }
+/**
    * This function is called every robot packet, no matter the mode. Use this for items like
    * diagnostics that you want ran during disabled, autonomous, teleoperated and test.
    *
@@ -61,7 +62,10 @@ public class Robot extends TimedRobot {
     // and running subsystem periodic() methods.  This must be called from the robot's periodic
     // block in order for anything in the Command-based framework to work.
     CommandScheduler.getInstance().run();
-  }
+  
+  
+    //Code for no data received yet
+}
 
   /**
    * This function is called once each time the robot enters Disabled mode.
@@ -108,9 +112,10 @@ public class Robot extends TimedRobot {
   /**
    * This function is called periodically during operator control.
    */
-  @Override
-  public void teleopPeriodic() {
-  }
+
+public void teleoperiodic(){
+
+}  
 
   @Override
   public void testInit() {
