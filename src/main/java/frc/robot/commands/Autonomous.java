@@ -16,6 +16,7 @@ public class Autonomous extends CommandBase{
   public Autonomous(Drivetrain drivetrain) {
     m_drivetrain = drivetrain;
     // Use addRequirements() here to declare subsystem dependencies.
+    addRequirements(m_drivetrain);
   }
 
   // Called when the command is initially scheduled.
@@ -28,9 +29,7 @@ public class Autonomous extends CommandBase{
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-     m_drivetrain.manualDrive(.5, 0, 0);{
-       
-     }
+     m_drivetrain.manualDrive(.5, 0, 0);
   }
   // Called once the command ends or is interrupted.
   @Override
@@ -44,6 +43,8 @@ public class Autonomous extends CommandBase{
     if(m_timer.get() >= 2){
        return true;
     }
+    else{
     return false;
+    }
   }
 }

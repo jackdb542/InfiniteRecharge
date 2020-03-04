@@ -12,7 +12,7 @@ import frc.robot.commands.EndgameProtocol;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.ManualDrive;
 import frc.robot.commands.SlideRackCommand;
-import frc.robot.subsystems.ColorMatch;
+import frc.robot.subsystems.ColorMatcher;
 import frc.robot.subsystems.ColorSensor;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Endgame;
@@ -53,9 +53,8 @@ public class RobotContainer {
   private final SlideRackCommand m_sRCommand = new SlideRackCommand(xbox, m_slideRack);
   //sREncoder = (s)lide(R)ackEncoder
   private final Endgame m_endgame = new Endgame();
-  private final EndgameProtocol m_EndgameProtocol = new EndgameProtocol(xbox, m_endgame);
+  private final EndgameProtocol m_EndgameProtocol = new EndgameProtocol(xbox, m_endgame,m_slideRack);
   private final ColorSensor m_colorSensor = new ColorSensor();
-  private final ColorMatch m_colorMatch = new ColorMatch();
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
    */
@@ -74,7 +73,7 @@ public class RobotContainer {
       new SlideRackCommand(xbox, m_slideRack)
     );
    m_endgame.setDefaultCommand(
-     new EndgameProtocol(xbox, m_endgame)
+     new EndgameProtocol(xbox, m_endgame,m_slideRack)
    );
   }
 

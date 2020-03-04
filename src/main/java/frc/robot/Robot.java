@@ -39,7 +39,7 @@ public class Robot extends TimedRobot {
     m_chooser.addOption("My Auto", kCustomAuto);
     SmartDashboard.putData("Auto choices", m_chooser);
   }
-  { 
+  {
     CameraServer.getInstance().startAutomaticCapture();
     UsbCamera cam1 = CameraServer.getInstance().startAutomaticCapture();
     cam1.setResolution(240,120);
@@ -114,7 +114,7 @@ public class Robot extends TimedRobot {
    */
 
 public void teleoperiodic(){
-
+ 
 }  
 
   @Override

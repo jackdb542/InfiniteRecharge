@@ -3,14 +3,14 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.util.Color;
-
+import com.revrobotics.ColorMatch;
 import com.revrobotics.ColorSensorV3;
 import com.revrobotics.ColorMatchResult;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 /**
  * Add your docs here.
  */
-public class ColorMatch extends SubsystemBase{
+public class ColorMatcher extends SubsystemBase{
   /**
    * Change the I2C port below to match the connection of your color sensor
    */
@@ -40,19 +40,11 @@ public class ColorMatch extends SubsystemBase{
   private final Color kRedTarget = ColorMatch.makeColor(0.561, 0.232, 0.114);
   private final Color kYellowTarget = ColorMatch.makeColor(0.361, 0.524, 0.113);
 
-
   public void robotInit() {
     m_colorMatcher.addColorMatch(kBlueTarget);
     m_colorMatcher.addColorMatch(kGreenTarget);
     m_colorMatcher.addColorMatch(kRedTarget);
     m_colorMatcher.addColorMatch(kYellowTarget);    
-  }
-  
-  private void addColorMatch(Color kBlueTarget2) {
-  }
-
-  private static Color makeColor(double d, double e, double f) {
-    return null;
   }
 
   public void robotPeriodic() {
@@ -97,7 +89,4 @@ public class ColorMatch extends SubsystemBase{
     SmartDashboard.putString("Detected Color", colorString);
   }
 
-  private ColorMatchResult matchClosestColor(Color detectedColor) {
-    return null;
-  }
 }

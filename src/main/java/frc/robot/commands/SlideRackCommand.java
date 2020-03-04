@@ -1,6 +1,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.SlideRack;
 
@@ -25,47 +26,29 @@ public class SlideRackCommand extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-   whenPressed(xbox.getRawButton(5));
-   whenPressed(xbox.getRawButton(6));
-  }
-  private void whenPressed(boolean rawButton) {
+   slideRack.upperLimit = 80;
+   slideRack.lowerLimit = 0;
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-     if(xbox.getRawButton(5) == true){
-         slideRack.setSpeed(0.5);
+     if(xbox.getRawButton(6) == true&& slideRack.hasReachedLowerLimit() == false){
+         slideRack.setSpeed(-0.5);
      }
-     else if(xbox.getRawButton(6) == true){
-       slideRack.setSpeed(-0.5);
+     else if(xbox.getRawButton(5) == true&&slideRack.hasReachedUpperLimit() == false){
+       slideRack.setSpeed(0.5);
+     }
+     else if(xbox.getRawButton(1)){
+        //use this to lower the slider after the match ends
+        slideRack.setSpeed(-0.5);
      }
      else{
        slideRack.setSpeed(0.0);
      }
+     SmartDashboard.putNumber("encoder value", slideRack.getShaftRotations());
      
-    /*
-    if (xbox.getRawButton(5)) {
-      if (!debounce) {
-        debounce = true;
-      }
-    } else {
-      debounce = false;
-    }
-    if (isUp) {
-      slideRack.setPosition(20.0);
-    } else {
-      slideRack.setPosition(0.0);
-      
-    if (xbox.getRawButton(6)){
-        if(!isUp){
-      debounce = true;
-    }
-   } else{
-      slideRack.setSpeed(-0.5);
-      debounce = false;
-    }
-  }*/
+    
 }     
     //return statement
    

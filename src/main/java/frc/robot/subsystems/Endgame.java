@@ -16,7 +16,7 @@ public class Endgame extends SubsystemBase {
   private final XboxController xbox = new XboxController(1);
     double targetPos = -20.0;
   
-    Encoder endGameEncoder = new Encoder(2,3);
+    Encoder endGameEncoder = new Encoder(5,6);
     
     //cl = climber Mid+Rear = there respective place, so climber Mid, so mid gear box, and Rear, the back gear box
     
