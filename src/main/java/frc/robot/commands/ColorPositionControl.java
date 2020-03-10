@@ -16,7 +16,10 @@ public class ColorPositionControl extends CommandBase {
     //addRequirements(rotater);
   }
 
-  // Called when the command is initially scheduled.
+  public ColorPositionControl(Joystick joy, Rotater m_rotater) {
+}
+
+// Called when the command is initially scheduled.
   @Override
   public void initialize() {
     }
@@ -45,4 +48,7 @@ public class ColorPositionControl extends CommandBase {
   public boolean isFinished() {
     return false;
   }
+
+public void setDefaultCommand(ColorPositionControl colorPositionControl) {
+}
 }

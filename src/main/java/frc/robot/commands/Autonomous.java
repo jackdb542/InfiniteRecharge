@@ -47,4 +47,7 @@ public class Autonomous extends CommandBase{
     return false;
     }
   }
+
+public void setDefaultCommand(Autonomous autonomous) {
+}
 }

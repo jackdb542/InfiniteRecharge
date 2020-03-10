@@ -21,6 +21,9 @@ public ColorRotationControl(final Rotater r) {
  //addRequirements(rotater);
 }
 
+public ColorRotationControl(Joystick joy, Rotater m_rotater) {
+}
+
 // Called when the command is initially scheduled.
 @Override
 public void initialize() {
@@ -58,5 +61,8 @@ public boolean isFinished() {
   else{
     return false;
   }
+}
+
+public void setDefaultCommand(ColorRotationControl colorRotationControl) {
 }
 }
