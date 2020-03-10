@@ -26,17 +26,17 @@ public class SlideRackCommand extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-   slideRack.upperLimit = 80;
+   slideRack.upperLimit = 52;
    slideRack.lowerLimit = 0;
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-     if(xbox.getRawButton(6) == true&& slideRack.hasReachedLowerLimit() == false){
+     if(xbox.getRawButton(12) == true&& slideRack.hasReachedLowerLimit() == false){
          slideRack.setSpeed(-0.5);
      }
-     else if(xbox.getRawButton(5) == true&&slideRack.hasReachedUpperLimit() == false){
+     else if(xbox.getRawButton(11) == true&&slideRack.hasReachedUpperLimit() == false){
        slideRack.setSpeed(0.5);
      }
      else if(xbox.getRawButton(1)){

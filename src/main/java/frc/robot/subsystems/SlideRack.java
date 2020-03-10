@@ -13,7 +13,7 @@ public class SlideRack extends SubsystemBase {
   //SpeedControllerGroup m_climberProtocol;
 
   public double lowerLimit = 0.0;
-  public double upperLimit = 80.0;
+  public double upperLimit = 52.0;
 
   Encoder slideRackEncoder = new Encoder(1,2);
   PWMTalonSRX slideRack = new PWMTalonSRX(RobotMap.slideRackPort);

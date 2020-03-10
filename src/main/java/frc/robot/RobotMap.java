@@ -19,6 +19,7 @@ public static final int leftBackPort = 3;
 
 public static final int endGamePort = 4;
 public static final int slideRackPort = 5;
+public static final int colorWheelPort = 6;
 
 public static int joystickPort = 0;
 public static int XBoxPort = 1;

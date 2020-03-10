@@ -22,11 +22,7 @@ public class EndgameProtocol extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    whenPressed(xbox.getRawButton(7));
-    whenPressed(xbox.getRawButton(8));
-  }
-
-  private void whenPressed(boolean rawButton) {
+    
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -34,7 +30,7 @@ public class EndgameProtocol extends CommandBase {
   public void execute() {
     if(xbox.getRawButton(8) == true){
      endGame.setSpeed(0.9);
-     slideRack.setSpeed(-0.15);
+     slideRack.setSpeed(-0.17);
      }
      else if(xbox.getRawButton(7) == true){
       endGame.setSpeed(-0.9);
